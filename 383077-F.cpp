@@ -7,9 +7,8 @@ int main() {
   cin.tie(nullptr);
 
   int K;
-  while (cin >> K && K != 0) {
+  while (cin >> K && K > 0) {
     bool first_not_set = true;
-    bool last_not_set = true;
     int first_element;
     int last_element;
     bool sum_start_element_not_set = true;
@@ -34,7 +33,6 @@ int main() {
       } else if (curr_sum > max_sum) {
         first_element = sum_start_element;
         last_element = curr;
-        last_not_set = false;
         max_sum = curr_sum;
       }
     }

@@ -6,9 +6,10 @@
 using namespace std;
 
 int main() {
-  int N, M;
+  int N;
   cin >> N;
   while (N--) {
+    int M;
     cin >> M;
     vector<pair<string, string>> id_by_time;
     while (M--) {

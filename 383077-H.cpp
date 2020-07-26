@@ -7,14 +7,14 @@ int main() {
   cin.tie(nullptr);
 
   int N;
-  while (cin >> N && N != 0) {
-    array<int, 101> sheet = {};
+  while (cin >> N && N > 0) {
+    array<int, 101> class_rank = {};
     int score;
     while (N--) {
       cin >> score;
-      ++sheet[score];
+      ++class_rank[score];
     }
     cin >> score;
-    cout << sheet[score] << endl;
+    cout << class_rank[score] << endl;
   }
 }

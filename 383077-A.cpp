@@ -20,11 +20,10 @@ int main() {
       continue;
     }
 
+    int cnt = 0;
     if (month >= 3) {
       ++year;
     }
-
-    int cnt = 0;
     for (int r18 = year + 18; year < r18; ++year) {
       cnt += is_leap_year(year);
     }

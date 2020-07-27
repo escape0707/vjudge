@@ -9,31 +9,31 @@ static array<array<bool, MAX_CNT>, MAX_CNT> is_friend;
 static int kid_cnt, ball_cnt;
 
 static bool check_friendship(int kid_id, const vector<int> &group) {
-  return all_of(begin(group), end(group),
-                [&kid_id](const int kid_in_group_id) {
-                  return is_friend[kid_id][kid_in_group_id];
-                });
+  return all_of(begin(group), end(group), [&kid_id](const int kid_in_group_id) {
+    return is_friend[kid_id][kid_in_group_id];
+  });
 }
 
 static bool dfs() {
   static vector<vector<int>> group_collection(ball_cnt);
   static int current_group_count = 0;
   static int kid_id = 0;
-  for (int group_id = min(current_group_count, ball_cnt - 1); group_id >= 0;
-       --group_id) {
-    if (check_friendship(kid_id, group_collection[group_id])) {
-      vector<int> &group = group_collection[group_id];
-      if (group.empty()) {
+  for (auto
+           group_iter = begin(group_collection),
+           e = begin(group_collection) + min(current_group_count + 1, ball_cnt);
+       group_iter != e; ++group_iter) {
+    if (check_friendship(kid_id, *group_iter)) {
+      if (group_iter->empty()) {
         ++current_group_count;
       }
-      group.push_back(kid_id);
+      group_iter->push_back(kid_id);
       ++kid_id;
       if (kid_id == kid_cnt || dfs()) {
         return true;
       }
       --kid_id;
-      group.pop_back();
-      if (group.empty()) {
+      group_iter->pop_back();
+      if (group_iter->empty()) {
         --current_group_count;
       }
     }

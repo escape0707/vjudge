@@ -14,10 +14,11 @@ static bool check_friendship(int kid_id, const vector<int> &group) {
   });
 }
 
+static vector<vector<int>> group_collection;
+static int current_group_count;
+static int kid_id;
+
 static bool dfs() {
-  static vector<vector<int>> group_collection(ball_cnt);
-  static int current_group_count = 0;
-  static int kid_id = 0;
   for (auto
            group_iter = begin(group_collection),
            e = begin(group_collection) + min(current_group_count + 1, ball_cnt);
@@ -42,17 +43,22 @@ static bool dfs() {
 }
 
 int main() {
-  cin >> kid_cnt >> ball_cnt;
-  for (int kid_id = 0; kid_id < kid_cnt; ++kid_id) {
-    int friend_cnt;
-    cin >> friend_cnt;
-    for (int friend_no = 0; friend_no < friend_cnt; ++friend_no) {
-      int friend_id;
-      cin >> friend_id;
-      is_friend[kid_id][friend_id] = true;
-      // is_friend[friend_id][kid_id] = true;
+  while (cin >> kid_cnt >> ball_cnt) {
+    is_friend = {};
+    for (int kid_id = 0; kid_id < kid_cnt; ++kid_id) {
+      int friend_cnt;
+      cin >> friend_cnt;
+      for (int friend_no = 0; friend_no < friend_cnt; ++friend_no) {
+        int friend_id;
+        cin >> friend_id;
+        is_friend[kid_id][friend_id] = true;
+        // is_friend[friend_id][kid_id] = true;
+      }
     }
-  }
 
-  cout << (dfs() ? "YES" : "NO") << endl;
+    group_collection = vector<vector<int>>(ball_cnt);
+    current_group_count = 0;
+    kid_id = 0;
+    cout << (dfs() ? "YES" : "NO") << endl;
+  }
 }

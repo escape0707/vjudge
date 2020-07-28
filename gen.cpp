@@ -1,6 +1,6 @@
+#include <array>
 #include <fstream>
 #include <random>
-#include <unordered_set>
 #include <vector>
 using namespace std;
 
@@ -13,29 +13,25 @@ static int random_int(int a, int b) {
   return u(e);
 }
 
-int main() {
-  int CASE_CNT = random_int(2, 10);
-  while (CASE_CNT--) {
-    const int CHILD_CNT = random_int(1, 10);
-    const int BALL_CNT = random_int(0, CHILD_CNT);
-    vector<unordered_set<int>> friendCollectionById(CHILD_CNT);
-    for (int child_id = 0; child_id < CHILD_CNT; ++child_id) {
-      const int random_cnt = random_int(0, CHILD_CNT - 1);
-      for (int j = 0; j < random_cnt; ++j) {
-        const int friend_id = random_int(0, CHILD_CNT - 1);
-        friendCollectionById[child_id].insert(friend_id);
-        friendCollectionById[friend_id].insert(child_id);
-      }
-    }
+static void print_random_Mars_number() {
+  static constexpr array<int, 25> prime_collection = {
+      2,  3,  5,  7,  11, 13, 17, 19, 23, 29, 31, 37, 41,
+      43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
 
-    fout << CHILD_CNT << ' ' << BALL_CNT << endl;
-    for (const auto &friendCollection : friendCollectionById) {
-      fout << friendCollection.size();
-      for (auto friend_id : friendCollection) {
-        fout << ' ' << friend_id;
-      }
-      fout << endl;
-    }
+  int length = random_int(1, 25);
+  fout << random_int(length == 1 ? 0 : 1, prime_collection[length - 1] - 1);
+  while (--length) {
+    fout << ',' << random_int(0, prime_collection[length - 1] - 1);
+  }
+}
+
+int main() {
+  int CASE_CNT = 100;
+  while (CASE_CNT--) {
+    print_random_Mars_number();
+    fout << ' ';
+    print_random_Mars_number();
     fout << endl;
   }
+  fout << "0 0" << endl;
 }

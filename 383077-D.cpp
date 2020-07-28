@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-  while (true) {
+  while (cin) {
     int A, B, K;
     cin >> A >> B >> K;
     if (A == 0 && B == 0) {

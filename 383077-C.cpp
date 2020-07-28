@@ -8,7 +8,7 @@ const map<string, int> spell_to_num = {
     {"five", 5}, {"six", 6}, {"seven", 7}, {"eight", 8}, {"nine", 9}};
 
 int main() {
-  while (true) {
+  while (cin) {
     int A = 0, B = 0;
     string curr;
     cin >> curr;

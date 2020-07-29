@@ -1,10 +1,8 @@
 #include <array>
-#include <fstream>
+#include <iostream>
 #include <random>
 #include <vector>
 using namespace std;
-
-ofstream fout("input.txt");
 
 static int random_int(int a, int b) {
   static random_device rd;
@@ -19,9 +17,9 @@ static void print_random_Mars_number() {
       43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
 
   int length = random_int(1, 25);
-  fout << random_int(length == 1 ? 0 : 1, prime_collection[length - 1] - 1);
+  cout << random_int(length == 1 ? 0 : 1, prime_collection[length - 1] - 1);
   while (--length) {
-    fout << ',' << random_int(0, prime_collection[length - 1] - 1);
+    cout << ',' << random_int(0, prime_collection[length - 1] - 1);
   }
 }
 
@@ -29,9 +27,9 @@ int main() {
   int CASE_CNT = 100;
   while (CASE_CNT--) {
     print_random_Mars_number();
-    fout << ' ';
+    cout << ' ';
     print_random_Mars_number();
-    fout << endl;
+    cout << endl;
   }
-  fout << "0 0" << endl;
+  cout << "0 0" << endl;
 }

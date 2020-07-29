@@ -1,11 +1,11 @@
 problem=383077-E
-g++ gen.cpp -o gen.exe
-g++ ac.cpp -o ac.exe
-g++ $problem.cpp -o $problem.exe
+g++ rand.cpp -o rand.out
+g++ std.cpp -o std.out
+g++ $problem.cpp -o $problem.out
 while true; do
-  ./gen.exe
-  ./ac.exe < input.txt > answer.txt
-  ./$problem.exe < input.txt > output.txt
+  ./rand.out
+  ./std.out < input.txt > answer.txt
+  ./$problem.out < input.txt > output.txt
   diff -s answer.txt output.txt
   if [ $? -ne 0 ]; then
     break

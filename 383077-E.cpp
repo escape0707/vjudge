@@ -68,7 +68,7 @@ static vector<int> add_Mars_number_output_reversed(const vector<int> &A,
       sum_reversed.push_back(0);
     }
   }
-  if (sum_reversed.back() == 0) {
+  if (sum_reversed.size() > 1 && sum_reversed.back() == 0) {
     sum_reversed.pop_back();
   }
   return sum_reversed;

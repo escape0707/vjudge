@@ -8,20 +8,14 @@
       "name": "Python: Current File",
       "type": "python",
       "request": "launch",
-      "program": "${file}",
-      "console": "integratedTerminal"
+      "program": "${relativeFile}"
     },
     {
-      "name": "clang++ - Build and debug active file",
+      "name": "Clang++: Current file",
       "type": "cppdbg",
       "request": "launch",
       "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
-      "args": [],
-      "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
-      "environment": [],
-      "externalConsole": false,
-      "MIMode": "gdb",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
@@ -30,7 +24,6 @@
         }
       ],
       "preLaunchTask": "clang++ build active file",
-      "miDebuggerPath": "/usr/bin/gdb"
     }
   ]
 }

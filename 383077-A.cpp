@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-bool is_leap_year(int year) {
+static bool is_leap_year(int year) {
   if (year % 100 == 0) {
     return year % 400 == 0;
   }

@@ -7,6 +7,7 @@
 
 using namespace std;
 
+__attribute__((unused))
 static vector<int> generate_primes() {
   constexpr int N = 10000;
   array<bool, N> is_prime;

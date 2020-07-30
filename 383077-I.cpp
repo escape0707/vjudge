@@ -17,7 +17,6 @@ static bool check_friendship(const int kid_id, const vector<int> &group) {
 static vector<vector<int>> group_collection;
 static int current_group_count;
 static int kid_id;
-
 static bool dfs() {
   for (auto
            group_iter = begin(group_collection),
@@ -45,7 +44,7 @@ static bool dfs() {
 int main() {
   while (cin >> kid_cnt >> ball_cnt) {
     is_friend = {};
-    for (int kid_id = 0; kid_id < kid_cnt; ++kid_id) {
+    for (kid_id = 0; kid_id < kid_cnt; ++kid_id) {
       int friend_cnt;
       cin >> friend_cnt;
       while (friend_cnt--) {

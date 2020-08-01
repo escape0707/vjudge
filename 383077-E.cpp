@@ -7,6 +7,8 @@
 
 using namespace std;
 
+using MarsNumber = vector<int>;
+
 __attribute__((unused))
 static vector<int> generate_primes() {
   constexpr int N = 10000;
@@ -25,8 +27,8 @@ static vector<int> generate_primes() {
   return prime_collection;
 }
 
-static vector<int> read_Mars_number() {
-  vector<int> Mars_number;
+static MarsNumber read_Mars_number() {
+  MarsNumber Mars_number;
   do {
     int digit;
     cin >> digit;
@@ -35,8 +37,8 @@ static vector<int> read_Mars_number() {
   return Mars_number;
 }
 
-static vector<int> add_Mars_number_output_reversed(const vector<int> &A,
-                                                   const vector<int> &B) {
+static MarsNumber add_Mars_number_output_reversed(const MarsNumber &A,
+                                                   const MarsNumber &B) {
   // const vector<int> prime_collection = generate_primes();
   // cout << '{';
   // copy(begin(prime_collection), begin(prime_collection) + 25,
@@ -46,7 +48,7 @@ static vector<int> add_Mars_number_output_reversed(const vector<int> &A,
       2,  3,  5,  7,  11, 13, 17, 19, 23, 29, 31, 37, 41,
       43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
 
-  vector<int> sum_reversed = {0};
+  MarsNumber sum_reversed = {0};
   for (auto A_iter = A.crbegin(), A_end = A.crend(), B_iter = B.crbegin(),
             B_end = B.crend();
        A_iter != A_end || B_iter != B_end;) {
@@ -75,7 +77,7 @@ static vector<int> add_Mars_number_output_reversed(const vector<int> &A,
   return sum_reversed;
 }
 
-static void print_Mars_number_reversed(const vector<int> &Mars_number) {
+static void print_Mars_number_reversed(const MarsNumber &Mars_number) {
   cout << Mars_number.back();
   for (auto iter = Mars_number.crbegin() + 1, e = Mars_number.crend();
        iter != e; ++iter) {
@@ -85,11 +87,11 @@ static void print_Mars_number_reversed(const vector<int> &Mars_number) {
 
 int main() {
   while (cin) {
-    const vector<int> A = read_Mars_number(), B = read_Mars_number();
+    const MarsNumber A = read_Mars_number(), B = read_Mars_number();
     if (A[0] == 0 && B[0] == 0) {
       break;
     }
-    vector<int> &&sum_reversed = add_Mars_number_output_reversed(A, B);
+    MarsNumber &&sum_reversed = add_Mars_number_output_reversed(A, B);
     print_Mars_number_reversed(std::move(sum_reversed));
     cout << endl;
   }

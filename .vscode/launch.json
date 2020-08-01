@@ -5,17 +5,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python: Current File",
-      "type": "python",
-      "request": "launch",
-      "program": "${relativeFile}"
-    },
-    {
       "name": "Clang++: Current file",
       "type": "cppdbg",
       "request": "launch",
       "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
       "cwd": "${workspaceFolder}",
+      "args": ["<", "input.txt"],
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
@@ -23,7 +18,7 @@
           "ignoreFailures": true
         }
       ],
-      "preLaunchTask": "clang++ build active file",
+      "preLaunchTask": "clang++ build active file"
     }
   ]
 }

@@ -9,17 +9,15 @@ using namespace std;
 
 using MarsNumber = vector<int>;
 
-__attribute__((unused))
-static vector<int> generate_primes() {
-  constexpr int N = 10000;
-  array<bool, N> is_prime;
+__attribute__((unused)) static vector<int> generate_primes() {
+  constexpr int CHECK_RANGE = 10000;
+  vector<bool> is_prime(CHECK_RANGE, true);
   vector<int> prime_collection;
-  is_prime.fill(true);
-  // is_prime[0] = is_prime[1] = false;
-  for (int i = 2; i < N; ++i) {
+  is_prime[0] = is_prime[1] = false;
+  for (int i = 2; i < CHECK_RANGE; ++i) {
     if (is_prime[i]) {
       prime_collection.push_back(i);
-      for (int j = i + i; j < N; j += i) {
+      for (int j = i + i; j < CHECK_RANGE; j += i) {
         is_prime[j] = false;
       }
     }
@@ -38,7 +36,7 @@ static MarsNumber read_Mars_number() {
 }
 
 static MarsNumber add_Mars_number_output_reversed(const MarsNumber &A,
-                                                   const MarsNumber &B) {
+                                                  const MarsNumber &B) {
   // const vector<int> prime_collection = generate_primes();
   // cout << '{';
   // copy(begin(prime_collection), begin(prime_collection) + 25,

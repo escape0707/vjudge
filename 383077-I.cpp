@@ -1,11 +1,10 @@
 #include <algorithm>
-#include <array>
 #include <iostream>
 #include <vector>
 using namespace std;
 
 static constexpr int MAX_CNT = 10;
-static array<array<bool, MAX_CNT>, MAX_CNT> is_friend;
+static vector<vector<bool>> is_friend;
 static int kid_cnt, ball_cnt;
 
 static bool check_friendship(const int kid_id, const vector<int> &group) {
@@ -43,7 +42,7 @@ static bool dfs() {
 
 int main() {
   while (cin >> kid_cnt >> ball_cnt) {
-    is_friend = {};
+    is_friend.assign(kid_cnt, vector<bool>(kid_cnt, false));
     for (kid_id = 0; kid_id < kid_cnt; ++kid_id) {
       int friend_cnt;
       cin >> friend_cnt;
@@ -54,10 +53,7 @@ int main() {
       }
     }
 
-    group_collection.resize(ball_cnt);
-    for (auto &group : group_collection) {
-      group.resize(0);
-    }
+    group_collection.assign(ball_cnt, vector<int>());
     current_group_count = 0;
     kid_id = 0;
     cout << (dfs() ? "YES" : "NO") << endl;
